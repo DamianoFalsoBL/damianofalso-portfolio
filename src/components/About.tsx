@@ -58,7 +58,7 @@ export default function About() {
             className="space-y-4 text-lg"
           >
             <p>
-              Sono un Perito Informatico e Junior Web Developer in costante evoluzione. Con una solida base in tecnologie web tradizionali, oggi sto concentrando la mia carriera per diventare un <strong>AI Automation Specialist</strong> a 360 gradi.
+              Sono un Ecommerce specialist e Junior Web Developer in costante evoluzione. Con una solida base in tecnologie web tradizionali, oggi sto concentrando la mia carriera per diventare un <strong>AI Automation Specialist</strong> a 360 gradi.
             </p>
             <p>
               Credo fermamente che l&apos;Intelligenza Artificiale non debba solo essere compresa, ma integrata attivamente per ottimizzare i flussi di lavoro. Mi dedico alla progettazione di architetture logiche (da React a workflow complessi su n8n) capaci di trasformare la produttività quotidiana e aziendale.
