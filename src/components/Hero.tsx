@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { apps } from "@/lib/apps";
 
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -18,7 +20,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background isolate">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background isolate px-4 pt-28 pb-16">
       {/* Background glowing orb */}
       <motion.div
         className="absolute w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] rounded-full bg-primary/20 blur-3xl pointer-events-none"
@@ -51,12 +53,12 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 text-center px-4 backdrop-blur-md bg-background/50 p-12 rounded-[3rem] border border-surface-variant shadow-2xl">
+      <div className="relative z-10 w-full max-w-4xl text-center backdrop-blur-md bg-background/50 px-6 py-10 md:p-12 rounded-[3rem] border border-surface-variant shadow-2xl">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-6xl md:text-8xl font-bold tracking-tighter text-foreground mb-4"
+          className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter text-foreground mb-4"
         >
           Damiano <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary inline-block pr-2">Falso</span>
         </motion.h1>
@@ -64,23 +66,46 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-xl md:text-3xl text-foreground/80 font-medium mb-8"
+          className="text-xl md:text-3xl text-foreground/80 font-medium mb-10"
         >
           AI Automation Specialist & Web Developer
         </motion.p>
-        <motion.button
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="px-8 py-4 bg-primary text-on-primary rounded-full text-lg font-bold shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 mb-8"
+        >
+          {apps.map((app) => (
+            <motion.a
+              key={app.name}
+              href={app.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05, y: -4 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 15 }}
+              className={`${app.color} ${app.textColor} group flex sm:flex-col items-center gap-3 sm:gap-2 px-6 py-4 sm:py-6 rounded-[2rem] shadow-lg text-left sm:text-center`}
+            >
+              <app.icon size={32} aria-hidden="true" className="shrink-0" />
+              <span className="flex-1">
+                <span className="flex items-center sm:justify-center gap-1 text-xl font-bold">
+                  {app.name}
+                  <ArrowUpRight size={18} aria-hidden="true" className="opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </span>
+                <span className="block text-sm opacity-80">{app.tagline}</span>
+              </span>
+            </motion.a>
+          ))}
+        </motion.div>
+        <button
+          className="text-foreground/70 font-medium hover:text-primary transition-colors"
           onClick={() => {
             document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          Scopri di più
-        </motion.button>
+          Scopri di più ↓
+        </button>
       </div>
     </section>
   );

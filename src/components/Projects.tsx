@@ -1,27 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Code, BookOpen } from "lucide-react";
-
-const portfolioItems = [
-  {
-    title: "Automazioni AI-Driven",
-    description: "Workflow sviluppati su n8n (agenti autonomi, bot di messaggistica, data ingestion) integrando LLM e hosting locale tramite Docker.",
-    tags: ["n8n", "LLM", "Docker", "Agenti AI"],
-    color: "bg-tertiary-container",
-    textColor: "text-on-tertiary-container",
-    icon: <Code size={20} />
-  },
-
-  {
-    title: "Web App",
-    description: "Sviluppo di interfacce web dinamiche e performanti, focalizzate su UX fluida ed estetica moderna.",
-    tags: ["React", "Node.js", "Tailwind", "Next.js"],
-    color: "bg-primary-container",
-    textColor: "text-on-primary-container",
-    icon: <Code size={20} />
-  },
-];
+import { ArrowUpRight, BookOpen } from "lucide-react";
+import { apps } from "@/lib/apps";
 
 const blogItems = [
   {
@@ -54,43 +35,48 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Portfolio & Case Histories</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">I Miei Progetti</h2>
           <p className="text-lg text-on-surface-variant max-w-3xl mx-auto">
-            La mia transizione verso l&apos;AI e lo sviluppo software avanzato attraverso progetti reali. Non solo codice, ma soluzioni a problemi concreti.
+            Web app che ho progettato e sviluppato per risolvere problemi concreti, online e pronte all&apos;uso.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-32 max-w-4xl mx-auto">
-          {portfolioItems.map((project, index) => (
-            <motion.div
-              key={index}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+          {apps.map((app, index) => (
+            <motion.a
+              key={app.name}
+              href={app.href}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className={`${project.color} ${project.textColor} rounded-[2.5rem] p-8 flex flex-col h-full shadow-lg transition-shadow hover:shadow-xl`}
+              className={`${app.color} ${app.textColor} group rounded-[2.5rem] p-8 flex flex-col h-full shadow-lg transition-shadow hover:shadow-xl`}
             >
-              <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-              <p className="opacity-90 mb-6 flex-grow">{project.description}</p>
-              
+              <div className="w-14 h-14 mb-6 flex items-center justify-center rounded-2xl bg-black/10 dark:bg-white/10">
+                <app.icon size={28} aria-hidden="true" />
+              </div>
+              <h3 className="text-2xl font-bold mb-1">{app.name}</h3>
+              <p className="text-sm font-medium opacity-70 mb-4">{app.tagline}</p>
+              <p className="opacity-90 mb-6 flex-grow">{app.description}</p>
+
               <div className="flex flex-wrap gap-2 mb-8">
-                {project.tags.map((tag, i) => (
-                  <span key={i} className="px-3 py-1 bg-black/10 dark:bg-white/10 rounded-full text-sm font-medium">
+                {app.tags.map((tag) => (
+                  <span key={tag} className="px-3 py-1 bg-black/10 dark:bg-white/10 rounded-full text-sm font-medium">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <div className="flex justify-between items-center mt-auto">
-                <button className="flex items-center gap-2 font-bold hover:opacity-80 transition-opacity">
-                  {project.icon} Dettagli
-                </button>
-                <button className="flex items-center gap-2 p-3 bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 rounded-full transition-colors">
-                  <ExternalLink size={20} />
-                </button>
-              </div>
-            </motion.div>
+              <span className="flex items-center justify-between mt-auto font-bold">
+                {app.href.replace("https://", "")}
+                <span className="p-3 bg-black/5 dark:bg-white/5 group-hover:bg-black/10 dark:group-hover:bg-white/10 rounded-full transition-colors">
+                  <ArrowUpRight size={20} aria-hidden="true" />
+                </span>
+              </span>
+            </motion.a>
           ))}
         </div>
 
