@@ -37,7 +37,7 @@ export default function Contact() {
             
             <div className="flex justify-center gap-4">
               <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/damianofalso"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, rotate: 5 }}
