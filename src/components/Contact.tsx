@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Briefcase, MessageCircle, Code } from "lucide-react";
+import { Mail, Briefcase } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -26,7 +26,7 @@ export default function Contact() {
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
             <motion.a
-              href="mailto:ciao@damianofalso.com"
+              href="mailto:damiano.falso@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center justify-center gap-3 px-8 py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg"
@@ -46,17 +46,6 @@ export default function Contact() {
                 aria-label="LinkedIn"
               >
                 <Briefcase size={24} />
-              </motion.a>
-              <motion.a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-4 bg-tertiary-container text-on-tertiary-container rounded-full shadow-md flex items-center justify-center"
-                aria-label="GitHub"
-              >
-                <Code size={24} />
               </motion.a>
             </div>
           </div>

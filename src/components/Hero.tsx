@@ -101,7 +101,7 @@ export default function Hero() {
         <button
           className="text-foreground/70 font-medium hover:text-primary transition-colors"
           onClick={() => {
-            document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
           }}
         >
           Scopri di più ↓
